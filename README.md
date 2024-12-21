@@ -1,2 +1,2 @@
-# t-sharp
+# T#
 The T# Programming Language
