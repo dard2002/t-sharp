@@ -30,6 +30,14 @@ Token* tokenize(char* source_code) {
         token = strtok(NULL, " ");
     }
 
+    if(idx >= size) {
+        size += 1;
+        tokens = realloc(tokens, size * sizeof(Token));
+    }
+
+    tokens[idx].value = NULL;
+    tokens[idx].type = TK_EOF;
+
     free(token);
     token = NULL;
 

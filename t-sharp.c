@@ -20,7 +20,6 @@ int main() {
     }
 
     Token* tokens = tokenize(fileContents);
-    printf("%lu\n", sizeof(*tokens) / sizeof(tokens[0]));
     Node* nodes = parse(tokens);
 
     free(nodes);
