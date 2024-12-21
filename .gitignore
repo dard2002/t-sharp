@@ -1,3 +1,9 @@
+# T-Sharp specific stuff
+t-sharp
+
+# VS Code
+.vscode/
+
 # Prerequisites
 *.d
 
