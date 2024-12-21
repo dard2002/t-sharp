@@ -3,6 +3,7 @@
 #include "../token/token.h"
 #include "node.h"
 
+// WORK IN PROGRESS
 Node* parse(Token* tokens) {
     int numOfTokens = sizeof(tokens) / sizeof(tokens[0]);
     Node* nodes = malloc(numOfTokens * sizeof(Node));
