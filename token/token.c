@@ -5,14 +5,14 @@
 
 Token* tokenize(char* source_code) {
     int idx = 0;
-    int characterCount = 0;
+    int character_count = 0;
     int size = 10;
     Token* tokens = malloc(size * sizeof(Token));
     
     char* token = strtok(source_code, " ");
     while (token != NULL) {
-        characterCount += strlen(token);
-        if (characterCount == size) {
+        character_count += strlen(token);
+        if (character_count == size) {
             size += 10;
             tokens = realloc(tokens, size * sizeof(Token));
         }

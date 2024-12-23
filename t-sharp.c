@@ -6,20 +6,20 @@
 
 int main() {
     FILE* file;
-    int fileContentsSize = 10;
-    int bytesRead = 0;
-    char* fileContents = malloc(fileContentsSize * sizeof(char));
+    int file_contents_size = 10;
+    int bytes_read = 0;
+    char* file_contents = malloc(file_contents_size * sizeof(char));
 
     file = fopen("examples/hello_world.tsharp", "r");
-    while (fgets(fileContents + bytesRead, fileContentsSize - bytesRead, file)) {
-        bytesRead += strlen(fileContents + bytesRead);
-        if (bytesRead >= fileContentsSize - 1) {
-            fileContentsSize += 10;
-            fileContents = realloc(fileContents, fileContentsSize * sizeof(char));
+    while (fgets(file_contents + bytes_read, file_contents_size - bytes_read, file)) {
+        bytes_read += strlen(file_contents + bytes_read);
+        if (bytes_read >= file_contents_size - 1) {
+            file_contents_size += 10;
+            file_contents = realloc(file_contents, file_contents_size * sizeof(char));
         }
     }
 
-    Token* tokens = tokenize(fileContents);
+    Token* tokens = tokenize(file_contents);
     Node* nodes = parse(tokens);
 
     free(nodes);
@@ -27,6 +27,9 @@ int main() {
 
     free(tokens);
     tokens = NULL;
+
+    free(file_contents);
+    file_contents = NULL;
 
     fclose(file);
 
