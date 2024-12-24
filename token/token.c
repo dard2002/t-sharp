@@ -1,6 +1,6 @@
-#include "stdio.h"
-#include "stdlib.h"
-#include "string.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 #include "token.h"
 
 Token* tokenize(char* source_code) {
