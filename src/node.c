@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "../token/token.h"
+#include "token.h"
 #include "node.h"
 
 Node* parse(Token* tokens) {
