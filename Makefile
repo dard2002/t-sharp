@@ -1,5 +1,6 @@
-SRCS = t-sharp.c token/token.c node/node.c
+SRCS = t-sharp.c $(wildcard src/*.c)
 OBJS = $(SRCS:.c=.o)
+CFLAGS = -g -Iinclude
 
 t-sharp: $(OBJS)
-	clang -o $@ $(OBJS)
+	clang $(CFLAGS) -o $@ $(OBJS)

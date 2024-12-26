@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "token/token.h"
-#include "node/node.h"
+#include "token.h"
+#include "node.h"
 
 int main() {
     FILE* file;
