@@ -25,12 +25,26 @@ Token* tokenize(char* source_code) {
             }
         }
 
+        int is_operator = 0;
+        for (int i = 0; i < num_of_operators; ++i) {
+            if(strcmp(token, operators[i]) == 0) {
+                is_operator = 1;
+                break;
+            }
+        }
+
+        // Assign token types
         if (is_keyword) {
             tokens[idx].type = TK_KEYWORD;
+        } else if (is_operator) {
+            tokens[idx].type = TK_OPERATOR;
+        } else {
+            tokens[idx].type = TK_VARIABLE_NAME;
         }
 
         tokens[idx].value = token;
 
+        printf("Token %d: Type %d, Value %s\n", idx, tokens[idx].type, tokens[idx].value);
         ++idx;
         token = strtok(NULL, " ");
     }
