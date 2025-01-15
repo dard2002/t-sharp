@@ -38,6 +38,8 @@ Token* tokenize(char* source_code) {
             tokens[idx].type = TK_KEYWORD;
         } else if (is_operator) {
             tokens[idx].type = TK_OPERATOR;
+        } else if (strcmp(token, ";")) {
+            tokens[idx].type = TK_LINE_END;
         } else {
             tokens[idx].type = TK_VARIABLE_NAME;
         }
