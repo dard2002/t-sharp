@@ -3,6 +3,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#ifndef TOKEN_H
+#define TOKEN_H
+
 typedef struct {
   int type;
   char* value;
@@ -23,33 +26,8 @@ enum {
   TK_EOF
 };
 
-// List of keywords defined in T#
-const char* keywords[] = {
-  "void",
-  "int",
-  "string",
-  "float",
-  "double",
-  "char",
-  "bool",
-  "enum",
-  "private",
-  "class",
-  "return",
-  "if",
-  "else",
-  "while",
-  "for"
-};
 
-// List of operators defined in T#
-const char* operators[] = {
-  "+",
-  "-",
-  "*",
-  "/",
-  "++",
-  "--",
-  "&&",
-  "||",
-};
+extern const char* keywords[];
+extern const char* operators[];
+
+#endif

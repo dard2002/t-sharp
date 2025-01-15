@@ -16,12 +16,17 @@ Token* tokenize(char* source_code) {
             size += 10;
             tokens = realloc(tokens, size * sizeof(Token));
         }
-        
-        // Fix this dumbass if statement later
-        if(strcmp(token, "void") != 0 || strcmp(token, "int") != 0 || strcmp(token, "bool") != 0 || strcmp(token, "string") != 0 || strcmp(token, "double") != 0 || strcmp(token, "float") != 0 || strcmp(token, "class") != 0 || strcmp(token, "struct") != 0 || strcmp(token, "public") != 0 || strcmp(token, "private") != 0 || strcmp(token, "return") != 0) {
-            tokens[idx].type = TK_TYPE;
-        } else {
-            tokens[idx].type = TK_VARIABLE_NAME;
+
+        int is_keyword = 0;
+        for (int i = 0; i < sizeof(keywords); ++i) {
+            if(strcmp(token, keywords[i]) == 0) {
+                is_keyword = 1;
+                break;
+            }
+        }
+
+        if (is_keyword) {
+            tokens[idx].type = TK_KEYWORD;
         }
 
         tokens[idx].value = token;
