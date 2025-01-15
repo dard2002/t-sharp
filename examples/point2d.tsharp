@@ -1,0 +1,24 @@
+class Point2D {
+    private int _x;
+    private int _y;
+
+    Point2D(int x, int y) {
+        _x = x;
+        _y = y;
+    }
+
+    int X {
+        get() return _x;
+        set(value) _x = value;
+    }
+
+    int Y {
+        get() return _y;
+        set(value) _y = value;
+    }
+}
+
+void main() {
+    Point2D myPoint2D = Point2D(5, 4);
+    print($"x: {myPoint2D.X}, y: {myPoint2D.Y}");
+}

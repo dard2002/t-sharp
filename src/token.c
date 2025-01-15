@@ -16,16 +16,37 @@ Token* tokenize(char* source_code) {
             size += 10;
             tokens = realloc(tokens, size * sizeof(Token));
         }
-        
-        // Fix this dumbass if statement later
-        if(strcmp(token, "void") != 0 || strcmp(token, "int") != 0 || strcmp(token, "bool") != 0 || strcmp(token, "string") != 0 || strcmp(token, "double") != 0 || strcmp(token, "float") != 0 || strcmp(token, "class") != 0 || strcmp(token, "struct") != 0 || strcmp(token, "public") != 0 || strcmp(token, "private") != 0 || strcmp(token, "return") != 0) {
+
+        int is_keyword = 0;
+        for (int i = 0; i < num_of_keywords; ++i) {
+            if(strcmp(token, keywords[i]) == 0) {
+                is_keyword = 1;
+                break;
+            }
+        }
+
+        int is_operator = 0;
+        for (int i = 0; i < num_of_operators; ++i) {
+            if(strcmp(token, operators[i]) == 0) {
+                is_operator = 1;
+                break;
+            }
+        }
+
+        // Assign token types
+        if (is_keyword) {
             tokens[idx].type = TK_KEYWORD;
+        } else if (is_operator) {
+            tokens[idx].type = TK_OPERATOR;
+        } else if (strcmp(token, ";")) {
+            tokens[idx].type = TK_LINE_END;
         } else {
             tokens[idx].type = TK_VARIABLE_NAME;
         }
 
         tokens[idx].value = token;
 
+        printf("Token %d: Type %d, Value %s\n", idx, tokens[idx].type, tokens[idx].value);
         ++idx;
         token = strtok(NULL, " ");
     }
