@@ -19,3 +19,4 @@ const char* keywords[] = {
   "for"
 };
 
+const int num_of_keywords = sizeof(keywords) / sizeof(keywords[0]);

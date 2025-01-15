@@ -18,7 +18,7 @@ Token* tokenize(char* source_code) {
         }
 
         int is_keyword = 0;
-        for (int i = 0; i < sizeof(keywords); ++i) {
+        for (int i = 0; i < num_of_keywords; ++i) {
             if(strcmp(token, keywords[i]) == 0) {
                 is_keyword = 1;
                 break;

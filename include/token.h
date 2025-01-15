@@ -26,8 +26,10 @@ enum {
   TK_EOF
 };
 
-
 extern const char* keywords[];
+extern const int num_of_keywords;
+
 extern const char* operators[];
+extern const int num_of_operators;
 
 #endif

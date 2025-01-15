@@ -4,3 +4,6 @@ CFLAGS = -g -Iinclude
 
 t-sharp: $(OBJS)
 	clang $(CFLAGS) -o $@ $(OBJS)
+
+clean:
+	rm -f $(OBJS) t-sharp
