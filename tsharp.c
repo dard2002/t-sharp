@@ -3,6 +3,7 @@
 #include <string.h>
 #include "token.h"
 #include "node.h"
+#include "interpreter.h"
 
 int main(int argc, char *argv[]) {
     FILE* file;
@@ -30,7 +31,19 @@ int main(int argc, char *argv[]) {
     }
 
     Token* tokens = tokenize(file_contents);
-    Node* nodes = parse(tokens);
+
+    // Count the number of tokens
+    int num_of_tokens = 0;
+    while (tokens[num_of_tokens].type != TK_EOF) {
+        num_of_tokens++;
+    }
+
+    // Include the TK_EOF token in the count
+    num_of_tokens++;
+
+    Node* nodes = create_nodes(tokens, num_of_tokens);
+
+    int result = run(nodes, num_of_tokens);
 
     free(tokens);
     tokens = NULL;
@@ -43,5 +56,5 @@ int main(int argc, char *argv[]) {
 
     fclose(file);
 
-    return 0;
+    return result;
 }
